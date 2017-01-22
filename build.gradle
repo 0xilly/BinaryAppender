@@ -4,7 +4,7 @@ plugins {
     id "signing"
 }
 
-group 'us.illyohs.binaryappender'
+group 'io.github.illyohs.binaryappender'
 version = project.prog_version
 archivesBaseName  = project.prog_name
 
@@ -15,7 +15,7 @@ jar {
     manifest {
         attributes 'Implementation-Title': 'JarAppender',
                 'Implementation-Version': version,
-                'Main-Class': 'us.illyohs.binaryappender.launch.Launch'
+                'Main-Class': 'io.github.illyohs.binaryappender.launch.Launch'
     }
 }
 
@@ -23,7 +23,7 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'BinaryAppender',
                 'Implementation-Version': version,
-                'Main-Class': 'us.illyohs.binaryappender.launch.Launch'
+                'Main-Class': 'io.github.illyohs.binaryappender.launch.Launch'
     }
     baseName = project.name + "-all"
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

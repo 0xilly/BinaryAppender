@@ -22,35 +22,33 @@
  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  */
-package us.illyohs.binaryappender.launch;
+package io.github.illyohs.binaryappender;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameter;
-import us.illyohs.binaryappender.BinaryAppender;
+import org.apache.commons.io.IOUtils;
 
-import java.io.File;
+import java.io.*;
 
-import static us.illyohs.binaryappender.BinaryAppender.appendBinary;
+public class BinaryAppender {
 
-public class Launch {
 
-    @Parameter(names = {"--targetbinary", "-t"}, required = true)
-    static String targetBin;
-
-    @Parameter(names = {"--append", "-a"}, required = true)
-    static String targetJar;
-
-    public static void main(String... args)
+    /**
+     * This function serves to append the binary
+     * @param appendable the file to append to the binary
+     * @param targetBin the target binary
+     */
+    public static void appendBinary(File appendable, File targetBin)
     {
-        BinaryAppender appender = new BinaryAppender();
-        new JCommander(appender, args);
-        System.out.println(targetBin);
-        System.out.println(targetJar);
+        try {
+            FileInputStream in   = new FileInputStream(appendable);
+            FileOutputStream out = new FileOutputStream(targetBin, true);
+            out.write(IOUtils.toByteArray(in));
+            out.close();
 
-        File binPath = new File(targetBin);
-        File jarPath = new File(targetJar);
-
-        appendBinary(jarPath,binPath);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
