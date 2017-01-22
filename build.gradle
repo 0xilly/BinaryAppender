@@ -6,7 +6,7 @@ plugins {
 
 group 'us.illyohs.binaryappender'
 version = project.prog_version
-archivesBaseName  = project.proj_name
+archivesBaseName  = project.prog_name
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -70,26 +70,26 @@ uploadArchives {
             }
 
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: ossrhUsername, password: projectossrhPassword)
             }
-
+gi
             pom.project {
                 name 'Example Application'
                 packaging 'jar'
                 // optionally artifactId can be defined here
                 description 'A small library to append files to the end of binarys'
-                url 'http://www.example.com/example-application'
+                url 'https://github.com/Illyohs/BinaryAppender'
 
                 scm {
-                    connection 'scm:svn:http://foo.googlecode.com/svn/trunk/'
-                    developerConnection 'scm:svn:https://foo.googlecode.com/svn/trunk/'
-                    url 'http://foo.googlecode.com/svn/trunk/'
+                    connection 'scm:git:git://github.com:Illyohs/BinaryAppender.git'
+                    developerConnection 'git@github.com:Illyohs/BinaryAppender.git'
+                    url 'https://github.com/Illyohs/BinaryAppender'
                 }
 
                 licenses {
                     license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        name 'BSD 2-Clause License'
+                        url 'https://github.com/Illyohs/BinaryAppender/blob/master/LICENSE'
                     }
                 }
 
@@ -97,7 +97,7 @@ uploadArchives {
                     developer {
                         id 'illyohs'
                         name 'Anthony Anderson'
-                        email 'aantony4122@gmail.com
+                        email 'aantony4122@gmail.com'
                     }
                 }
             }
