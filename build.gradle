@@ -20,12 +20,13 @@ jar {
 }
 
 task fatJar(type: Jar) {
+    classifier 'all'
     manifest {
         attributes 'Implementation-Title': 'BinaryAppender',
                 'Implementation-Version': version,
                 'Main-Class': 'io.github.illyohs.binaryappender.launch.Launch'
     }
-    baseName = project.name + "-all"
+    baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
@@ -70,9 +71,9 @@ uploadArchives {
             }
 
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: projectossrhPassword)
+                authentication(userName: ossrhUsername, password: ossrhPassword)
             }
-gi
+
             pom.project {
                 name 'Example Application'
                 packaging 'jar'
