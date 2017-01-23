@@ -42,7 +42,7 @@ public class Launch {
 
     public static void main(String... args)
     {
-        BinaryAppender appender = new BinaryAppender();
+        Launch appender = new Launch();
         new JCommander(appender, args);
         System.out.println(targetBin);
         System.out.println(targetJar);
