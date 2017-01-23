@@ -51,4 +51,16 @@ public class BinaryAppender {
         }
 
     }
+
+    /**
+     * Wrapper for append binary
+     * @param appendable string path to the target file to append to binary
+     * @param targetBin string path to the target binary
+     */
+    public static void appendBinary(String appendable, String targetBin)
+    {
+        File binPath = new File(targetBin);
+        File jarPath = new File(appendable);
+        appendBinary(binPath, jarPath);
+    }
 }
